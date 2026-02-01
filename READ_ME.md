@@ -1,4 +1,5 @@
-En este repositorio voy a probar distintos modelos y metodos de anonimizacion. Dejo debajo de cada uno comentarios tras el intento de usarlos
+En este repositorio voy a probar distintos modelos y metodos de anonimizacion con los que me fui encontrando en la web.<br>
+Dejo debajo de cada uno comentarios tras el intento de usarlos
 
 1) tanaos.ipynb
     - no me dejó poner el numero y tipo de maskara a cada hallazgo
@@ -6,6 +7,7 @@ En este repositorio voy a probar distintos modelos y metodos de anonimizacion. D
     + tiene para enmascarar personas, telefonos, direcciones, lugares, fechas; y a eleccion podes sacar que no enmascare fechas por ejemplo. 
 
 2) anonimizador.py
+    - basado en scrubadub, script by 
     + tiene para DNI, CUIL, MAIL, TELEFONO
     - falta nombres
 
