@@ -2,12 +2,15 @@ En este repositorio voy a probar distintos modelos y metodos de anonimizacion co
 Dejo debajo de cada uno comentarios tras el intento de usarlos
 
 1) tanaos.ipynb
+    - https://docs.tanaos.com/artifex/text-anonymization/inference/
+    - https://huggingface.co/tanaos/tanaos-text-anonymizer-v1
+
     - no me dejó poner el numero y tipo de maskara a cada hallazgo
     - no pude hacer el finetune a español. mandé mail.
     + tiene para enmascarar personas, telefonos, direcciones, lugares, fechas; y a eleccion podes sacar que no enmascare fechas por ejemplo. 
 
 2) anonimizador.py
-    - basado en scrubadub, script by 
+    - basado en scrubadub, script por equipo CDD GOGIES
     + tiene para DNI, CUIL, MAIL, TELEFONO
     - falta nombres
 
