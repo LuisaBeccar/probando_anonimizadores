@@ -1,20 +1,19 @@
 #%%
-!pip install scrubadub 
+# correr en terminal de repo
+#pip install scrubadub
+#pip install scrubadub_spacy
+#pip install spacy_transformers
+# %%
+from pydoc import text
+import pandas as pd
 import re
 import scrubadub
 from scrubadub.filth import Filth
 from scrubadub.detectors import Detector
 import pandas as pd
 
-#%% Cargar datos de ejemplo
-with open(r"C:\Users\luisa\OneDrive\Documentos\RepositorioVS_Github\probando_anonimizadores\testtxt.txt", "r", encoding="utf-8") as f:
-    texto = f.read()    
-texto
 #%%
-
-# tiene DNI TELEFONO CUIL MAIL
-# NO tiene nombres ni direcciones
-
+# CREA  DNI TELEFONO CUIL MAIL
 # -------------------------------
 
 # DNI
@@ -95,37 +94,22 @@ class MailDetector(Detector):
                 document_name=document_name,
                 detector_name=self.name
             )
-#%%
-
-# -------------------------------
-# Crear Scrubber limpio, sin detectores por defecto
-scrubber = scrubadub.Scrubber(detector_list=[])
-
-# Agregar solo tus detectores personalizados
-scrubber.add_detector(DniDetector())
-scrubber.add_detector(TelDetector())
-scrubber.add_detector(CuilDetector())
-scrubber.add_detector(MailDetector())
-
-# -------------------------------
-# Probar sobre un texto
-#texto = "El paciente con DNI 20333444 llamó desde el número 11-45678901 mi_mail@mail.com"
 
 
-resultado = scrubber.clean(texto)
+#  Numero sensible generico (by Lui)
 
-print(resultado)
+class NumerosFilth(Filth):
+    type = 'MAIL'
 
-#%%
-'''
-#df["evolucion"] = df["evolucion"].fillna("").astype(str)
-df["evolucion_limpia"] = df["evolucion"].apply(scrubber.clean)
-
-#%%
-#df["diferencia"] = df[ 'evolucion'] != df["evolucion_limpia"]
-
-df_cambiado = df[df['diferencia']==True]
-#%%
-#df.to_excel('prueba_scrubadub.xlsx', index=False)  # index=False evita que se guarde el índice
-#df_cambiado.to_excel('cambios_scrubadub.xlsx', index=False)  # index=False evita que se guarde el índice
-'''
+class NumerosDetector(Detector):
+    name = 'numeros sensibles'
+    def iter_filth(self, text, document_name=None):
+        
+        numeros_sensibles_pattern=r'(?<!\d)(?<!-)\b(\d{7,8}|\d{1,2}(?:\.\d{3}){2}|(?:\+?54\s?)?9?\s?\d{2,4}[-.\s]?\d{6,8})\b(?!-)(?!\d)'
+        for match in re.finditer(numeros_sensibles_pattern, text):
+            yield NumerosFilth(
+                beg=match.start(),
+                end=match.end(),
+                text=match.group(),
+                document_name=document_name,
+                detector_name=self.name)

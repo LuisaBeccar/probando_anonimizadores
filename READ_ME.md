@@ -9,8 +9,8 @@ Dejo debajo de cada uno comentarios tras el intento de usarlos
     - no pude hacer el finetune a español. mandé mail.
     + tiene para enmascarar personas, telefonos, direcciones, lugares, fechas; y a eleccion podes sacar que no enmascare fechas por ejemplo. 
 
-2) anonimizador.py
-    - basado en scrubadub, script por equipo CDD GOGIES
-    + tiene para DNI, CUIL, MAIL, TELEFONO
-    - falta nombres
+2) scrubadub
+    - basado en el script por equipo CDD GOGIES
+    + detectores_personalizados  para DNI, CUIL, MAIL, TELEFONO
+    - detecta nombres en ingles
 
