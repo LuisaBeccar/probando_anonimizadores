@@ -5,7 +5,7 @@ Dejo debajo de cada uno comentarios tras el intento de usarlos
     - https://docs.tanaos.com/artifex/text-anonymization/inference/
     - https://huggingface.co/tanaos/tanaos-text-anonymizer-v1
 
-    - no me dejó poner el numero y tipo de maskara a cada hallazgo
+    - el numero de tipo sale raro
     - no pude hacer el finetune a español. mandé mail.
     + tiene para enmascarar personas, telefonos, direcciones, lugares, fechas; y a eleccion podes sacar que no enmascare fechas por ejemplo. 
 
